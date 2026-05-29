@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopat - About</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body class="page-about">
+    <section class="hero">
+        <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
+        <div class="hero-content">
+            <h1 class="hero-title">About kopat</h1>
+        </div>
+    </section>
+    
+    <section class="main-content">
+        <div class="container">
+            <br><br><br>
+            <!-- БЛОК 1: Who am I + What I did (фото слева) -->
+            <div class="about-block">
+                <div class="about-block-grid">
+                    <div class="about-block-image">
+                        <img src="Images/sakura_minimalism_for_about.jpg" alt="Сакура">
+                    </div>
+                    <div class="about-block-text">
+                        <h2>Who am I</h2>
+                        <p>Привет! Я начинающий разработчик из России. Программированием интересуюсь очень давно, а писать реальный код начал год-два назад. Сейчас уверенно чувствую себя в Python, а HTML/CSS пока-что только в процессе изучения.</p>
+                        <h2>What I did</h2>
+                        <p>Мои рабочие штуки, которые можно показать: Парсер Википедии — вытаскивает первый абзац о любом городе, Свой сайт на GitHub Pages (да, этот)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- БЛОК 2: My main project (фото справа) -->
+            <div class="about-block">
+                <div class="about-block-grid">
+                    <div class="about-block-text">
+                        <h2>My main project is a guide to Japan</h2>
+                        <p>Зачем нужен этот проект? вот пару функций которые уже можно попробовать:</p>
+                        <ul>
+                            <li>Искать город в Википедии и показывать абзац</li>
+                            <li>Спрашивать погоду (API)</li>
+                            <li>Выдавать случайный факт про Японию (из .txt файла)</li>
+                            <li>Выдавать случайный факт про кошек (API)</li>
+                        </ul><br><br><br>
+                        <p>Всё это работает прямо сейчас в консольной версии. Так же проект будет дорабатываться, появятся новые функции и многое другое.</p>
+                        <a href="https://github.com/Nikitoskaaa" target="_blank" class="btn"> My Github</a>
+                    </div>
+                    <div class="about-block-image">
+                        <img src="Images\Japan_minimalism_for_mainproject_two.jpg" alt="Japan project">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- БЛОК 3: Why Japan (фото слева) -->
+            <div class="about-block">
+                <div class="about-block-grid">
+                    <div class="about-block-image">
+                        <img src="Images\Japan_flag_for_about_me_japan.webp" alt="Why Japan">
+                    </div>
+                    <div class="about-block-text">
+                        <h2>Why Japan?</h2>
+                        <p>Мне нравится культура, природа, еда и отсутствие лишних ограничений. Там просто круто, к тому же в IT-сфере у них проще найти работу и стажировку, а культура и язык мне очень близки. В планах — продолжать учить стек, делать проекты и со временем уехать туда жить/работать.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- КНОПКИ -->
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="index.html" class="btn">На главную</a>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        const heroImage = document.getElementById('heroImage');
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                heroImage.classList.add('show');
+            }, 500);
+        });
+        
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const heroHeight = window.innerHeight;
+            const maxScale = 1.5;
+            
+            let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
+            if (scale > maxScale) scale = maxScale;
+            if (scale < 1) scale = 1;
+            
+            heroImage.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+</html>

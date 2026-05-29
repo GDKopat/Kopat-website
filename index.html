@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopat - Главная</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body class="page-index">
+    <section class="hero">
+        <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
+        <div class="hero-content">
+            <h1 class="hero-title">kopat</h1>
+            <p class="hero-subtitle">Welcome to my website</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <br><br><br>
+            <div class="info-wrapper">
+                <div class="info-text">
+                    <h2>About me</h2>
+                    <p>Я начинающий программист, изучаю английский. У меня есть проект на Python, который можно посмотреть на моем Github</p>
+                    <a href="about.html" class="btn">More about me</a>
+                    <a href="https://github.com/Nikitoskaaa" target="_blank" class="btn"> My Github</a>
+                    <button onclick="alert('Просто тестовое сообщение')" class="btn">Нажми меня</button>
+                </div>
+                <div class="info-image">
+                    <img src="Images/sakura_minimalism.jpg" alt="Сакура">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const heroImage = document.getElementById('heroImage');
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                heroImage.classList.add('show');
+            }, 500);
+        });
+        
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const heroHeight = window.innerHeight;
+            const maxScale = 1.5;
+            
+            let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
+            if (scale > maxScale) scale = maxScale;
+            if (scale < 1) scale = 1;
+            
+            heroImage.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'MySakuraFont', sans-serif;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: crimson;
+    border-radius: 400px;
+}
+
+@font-face {
+    font-family: 'MySakuraFont';
+    src: url('../fonts/雅草体.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    will-change: transform;
+}
+
+.hero-image.show {
+    opacity: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.hero-title {
+    font-size: 4rem;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    color: crimson;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    color: crimson;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.main-content {
+    border: 3px solid crimson;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    background-color: #ffffff;
+    min-height: 95vh;
+    padding: 4rem 2rem;
+    z-index: 10;
+    margin-top: 20vh;
+    box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1e2a3a;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #2c3e4e;
+}
+
+.main-content ul {
+    margin-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.main-content li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2c3e4e;
+}
+
+.btn {
+    display: inline-block;
+    background-color: rgb(220, 20, 60);
+    color: white;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    transition: transform 0.5s ease;
+    border: crimson;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: rgb(192, 20, 55);
+    transform: scale(1.05);
+}
+
+/* ========== СТРУКТУРА ДЛЯ ПЕРВОЙ СТРАНИЦЫ (index.html) ========== */
+/* На первой странице: фото СПРАВА от текста */
+.page-index .info-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.page-index .info-image {
+    grid-column: 2 / 3;
+}
+
+.page-index .info-text {
+    grid-column: 1 / 2;
+}
+
+.page-index .info-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* ========== СТРУКТУРА ДЛЯ ВТОРОЙ СТРАНИЦЫ (about.html) ========== */
+/* На второй странице: фото СЛЕВА от текста "Who am I" и "What I did" */
+.page-about .info-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    align-items: start;
+}
+
+.page-about .info-image {
+    grid-column: 1 / 2;
+}
+
+.page-about .info-text {
+    grid-column: 2 / 3;
+}
+
+.page-about .info-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* Блоки после info-wrapper на второй странице */
+.page-about .project-block,
+.page-about .why-block {
+    margin-bottom: 40px;
+}
+
+/* ========== НОВЫЕ СТИЛИ ДЛЯ НЕСКОЛЬКИХ БЛОКОВ НА ABOUT.HTML ========== */
+
+/* Каждый блок — отдельный с рамкой */
+.about-block {
+    border: 2px solid crimson;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 40px;
+    background-color: #fefefe;
+    
+}
+
+
+
+/* Сетка внутри каждого блока */
+.about-block-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Чередование: первый блок — фото слева */
+.about-block:nth-child(1) .about-block-grid {
+    grid-template-columns: 1fr 1.5fr;
+}
+
+/* Второй блок — фото справа */
+.about-block:nth-child(2) .about-block-grid {
+    grid-template-columns: 1.5fr 1fr;
+}
+
+/* Третий блок — фото слева */
+.about-block:nth-child(3) .about-block-grid {
+    grid-template-columns: 1fr 1.5fr;
+}
+
+/* Фото в блоках */
+.about-block-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.about-block-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Текст в блоках */
+.about-block-text h2 {
+    color: crimson;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.about-block-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #2c3e4e;
+}
+
+.about-block-text ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.about-block-text li {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #2c3e4e;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 768px) {
+    .about-block-grid,
+    .about-block:nth-child(1) .about-block-grid,
+    .about-block:nth-child(2) .about-block-grid,
+    .about-block:nth-child(3) .about-block-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .about-block {
+        padding: 20px;
+    }
+    
+    .about-block-text h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Адаптация для всех */
+@media (max-width: 968px) {
+    .page-index .info-wrapper,
+    .page-about .info-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .page-index .info-image,
+    .page-index .info-text,
+    .page-about .info-image,
+    .page-about .info-text {
+        grid-column: 1 / 2;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .main-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .main-content {
+        padding: 2rem 1rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .main-content h2 {
+        font-size: 1.5rem;
+    }
+    .main-content p, .main-content li {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+}
