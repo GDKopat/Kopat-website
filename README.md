@@ -1,2 +1,2 @@
 # Kopat-website
-# https://nikitoskaaa.github.io/Kopat-website/
+# https://gdkopat.github.io/Kopat-website/
