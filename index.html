@@ -10,8 +10,8 @@
     <section class="hero">
         <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
         <div class="hero-content">
-            <h1 class="hero-title">kopat</h1>
-            <p class="hero-subtitle">Welcome to my website</p>
+            <h1 class="hero-title fade-up">kopat</h1>
+            <p class="hero-subtitle fade-up">Welcome to my website</p>
         </div>
     </section>
 
@@ -20,13 +20,16 @@
             <br><br><br>
             <div class="info-wrapper">
                 <div class="info-text">
-                    <h2>About me</h2>
-                    <p>Я начинающий программист, изучаю английский. У меня есть проект на Python, который можно посмотреть на моем Github</p>
-                    <a href="about.html" class="btn">More about me</a>
-                    <a href="https://github.com/GDKopat" target="_blank" class="btn"> My Github</a>
-                    <button onclick="alert('Просто тестовое сообщение')" class="btn">Нажми меня</button>
+                    <!-- Добавляем классы анимации -->
+                    <h2 class="fade-up">About me</h2>
+                    <p class="fade-up delay-1">Мне 17 лет. Я пишу на Python, делаю консольные приложения и постепенно осваиваю веб. Мой основной проект — гид по Японии с парсингом Википедии и открытыми API. Так же есть пару проектов на Github</p>
+                    <div class="fade-up delay-2">
+                        <a href="about.html" class="btn">More about me</a>
+                        <a href="https://github.com/Nikitoskaaa" target="_blank" class="btn">My Github</a>
+                        <button class="btn btn:hover fade-up" onclick="askQuestion()">Нажми меня</button>
+                    </div>
                 </div>
-                <div class="info-image">
+                <div class="info-image fade-up delay-3">
                     <img src="Images/sakura_minimalism.jpg" alt="Сакура">
                 </div>
             </div>
@@ -34,6 +37,18 @@
     </section>
 
     <script>
+        function askQuestion() {
+            let answer = prompt('Какой твой любимый язык программирования?');
+            if (answer) {
+                if (answer.length > 20) {
+                    alert(`Ладно -_-`)
+                } else {
+                    alert(`Отличный выбор! ${answer} — это мощно! `);
+                }
+            }
+        }
+
+        // Эффект масштабирования фона
         const heroImage = document.getElementById('heroImage');
         
         window.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +67,27 @@
             if (scale < 1) scale = 1;
             
             heroImage.style.transform = `scale(${scale})`;
+        });
+
+        // ========== АКТИВАЦИЯ АНИМАЦИЙ ПРИ СКРОЛЛЕ ==========
+        // Находим все элементы с классами анимации
+        const animatedElements = document.querySelectorAll('.fade-up');
+        
+        // Создаём наблюдатель за появлением элементов
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { 
+            threshold: 0.2,  // Элемент активируется когда 20% видно на экране
+            rootMargin: '0px 0px -50px 0px'  // Небольшая задержка перед активацией
+        });
+        
+        // Начинаем следить за каждым элементом
+        animatedElements.forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
