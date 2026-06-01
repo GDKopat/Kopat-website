@@ -277,6 +277,24 @@ body {
     color: #2c3e4e;
 }
 
+/* Анимации для появления */
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержки для последовательного вылета */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.5s; }
+
+
 /* Адаптация для телефонов */
 @media (max-width: 768px) {
     .about-block-grid,
