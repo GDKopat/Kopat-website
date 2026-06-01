@@ -10,69 +10,76 @@
     <section class="hero">
         <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
         <div class="hero-content">
-            <h1 class="hero-title">About kopat</h1>
+            <h1 class="hero-title fade-up">About kopat</h1>
         </div>
     </section>
-    
+
     <section class="main-content">
         <div class="container">
             <br><br><br>
             <!-- БЛОК 1: Who am I + What I did (фото слева) -->
-            <div class="about-block">
+            <div class="about-block fade-up">
                 <div class="about-block-grid">
-                    <div class="about-block-image">
+                    <div class="about-block-image fade-up delay-1">
                         <img src="Images/sakura_minimalism_for_about.jpg" alt="Сакура">
                     </div>
                     <div class="about-block-text">
-                        <h2>Who am I</h2>
-                        <p>Привет! Я начинающий разработчик из России. Программированием интересуюсь очень давно, а писать реальный код начал год-два назад. Сейчас уверенно чувствую себя в Python, а HTML/CSS пока-что только в процессе изучения.</p>
-                        
+                        <h2 class="fade-up delay-1">Who am I</h2>
+                        <p class="fade-up delay-2">Привет! Я начинающий разработчик из России. Программированием интересуюсь очень давно, а писать реальный код начал год-два назад. Сейчас уверенно чувствую себя в Python, а HTML/CSS пока-что только в процессе изучения.</p>
+                        <h2 class="fade-up delay-3">What I did</h2>
+                        <p class="fade-up delay-4">Из готового и работающего:</p>
+                        <ul>
+                            <li class="fade-up delay-5">Гид по Японии: показывает погоду, парсит Википедию, выдаёт случайные факты.</li>
+                            <li class="fade-up delay-6">Словарь-викторина для изучения английских слов.</li>
+                            <li class="fade-up delay-7">Этот сайт (на HTML/CSS).</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            
+
             <!-- БЛОК 2: My main project (фото справа) -->
-            <div class="about-block">
+            <div class="about-block fade-up">
                 <div class="about-block-grid">
                     <div class="about-block-text">
-                        <h2>My main project is a guide to Japan</h2>
-                        <p>Зачем нужен этот проект? вот пару функций которые уже можно попробовать:</p>
+                        <h2 class="fade-up delay-1">My main project is a guide to Japan</h2>
+                        <p class="fade-up delay-2">Гид по Японии — консольное приложение, которое уже умеет:</p>
                         <ul>
-                            <li>Искать город в Википедии и показывать абзац</li>
-                            <li>Спрашивать погоду</li>
-                            <li>Выдавать случайный факт про Японию</li>
-                            <li>Выдавать случайный факт про кошек</li>
-                        </ul><br><br><br>
-                        <p>Всё это работает прямо сейчас в консольной версии. Так же проект будет дорабатываться, появятся новые функции и многое другое.</p>
-                        <a href="https://github.com/GDKopat" target="_blank" class="btn"> My Github</a>
+                            <li class="fade-up delay-3">Получать из Википедии первый абзац о любом городе.</li>
+                            <li class="fade-up delay-4">Запрашивать текущую погоду через внешний API.</li>
+                            <li class="fade-up delay-5">Показывать случайный факт о Японии и отдельно — о кошках.</li>
+                            <li class="fade-up delay-6">Выдавать случайный факт про кошек (API)</li>
+                        </ul>
+                        <p class="fade-up delay-7">Всё это работает прямо сейчас в консольной версии. Так же проект будет дорабатываться.</p>
+                        <a href="https://github.com/Nikitoskaaa" target="_blank" class="btn fade-up delay-8">My Github</a>
                     </div>
-                    <div class="about-block-image">
+                    <div class="about-block-image fade-up delay-9">
                         <img src="Images\Japan_minimalism_for_mainproject_two.jpg" alt="Japan project">
                     </div>
                 </div>
             </div>
-            
+
             <!-- БЛОК 3: Why Japan (фото слева) -->
-            <div class="about-block">
+            <div class="about-block fade-up">
                 <div class="about-block-grid">
-                    <div class="about-block-image">
+                    <div class="about-block-image fade-up delay-1">
                         <img src="Images\Japan_flag_for_about_me_japan.webp" alt="Why Japan">
                     </div>
                     <div class="about-block-text">
-                        <h2>Why Japan?</h2>
-                        <p>Мне нравится культура, природа, еда и отсутствие лишних ограничений. Там просто круто, к тому же в IT-сфере у них проще найти работу и стажировку, а культура и язык мне очень нравятся. В планах — продолжать учить стек, делать проекты и со временем уехать туда жить/работать.</p>
+                        <h2 class="fade-up delay-2">Why Japan?</h2>
+                        <p class="fade-up delay-3">Япония — одна из ведущих стран в IT. Меня привлекает её культура, технологический уровень и возможность найти работу или стажировку. Сейчас я учу английский и планирую начать учить японский. Цель — через несколько лет переехать туда и работать по специальности.</p>
                     </div>
                 </div>
             </div>
 
             <!-- КНОПКИ -->
             <div style="text-align: center; margin-top: 40px;">
-                <a href="index.html" class="btn">На главную</a>
+                <a href="index.html" class="btn fade-up">На главную</a>
             </div>
         </div>
     </section>
-    
+
     <script>
+        // ========== ЭФФЕКТ ДЛЯ ФОНА (твой старый код, не трогаем) ==========
         const heroImage = document.getElementById('heroImage');
         
         window.addEventListener('DOMContentLoaded', () => {
@@ -80,17 +87,41 @@
                 heroImage.classList.add('show');
             }, 500);
         });
-        
+
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
             const heroHeight = window.innerHeight;
             const maxScale = 1.5;
-            
+
             let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
             if (scale > maxScale) scale = maxScale;
             if (scale < 1) scale = 1;
-            
+
             heroImage.style.transform = `scale(${scale})`;
+        });
+
+        // ========== НОВЫЙ КОД: АНИМАЦИИ ВЫЛЕТА ПРИ СКРОЛЛЕ ==========
+        // 1. Находим ВСЕ элементы с классом .fade-up (они будут анимироваться)
+        const animatedElements = document.querySelectorAll('.fade-up');
+        
+        // 2. Создаём наблюдателя (Intersection Observer)
+        // Он будет следить, когда элементы появляются на экране
+        const observer = new IntersectionObserver((entries) => {
+            // entries - массив элементов, которые попали в кадр
+            entries.forEach(entry => {
+                // Если элемент виден на экране
+                if (entry.isIntersecting) {
+                    // Добавляем класс .show, который включает анимацию
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { 
+            threshold: 0.2  // Элемент считается видимым, когда 20% его площади на экране
+        });
+        
+        // 3. Начинаем следить за каждым элементом с классом .fade-up
+        animatedElements.forEach(element => {
+            observer.observe(element);
         });
     </script>
 </body>
