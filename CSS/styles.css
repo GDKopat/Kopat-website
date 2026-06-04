@@ -36,7 +36,7 @@ body {
 }
 
 .hero-image {
-    position: fixed;
+    position:fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -147,8 +147,6 @@ body {
     transform: scale(1.05);
 }
 
-/* ========== СТРУКТУРА ДЛЯ ПЕРВОЙ СТРАНИЦЫ (index.html) ========== */
-/* На первой странице: фото СПРАВА от текста */
 .page-index .info-wrapper {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -172,8 +170,6 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-/* ========== СТРУКТУРА ДЛЯ ВТОРОЙ СТРАНИЦЫ (about.html) ========== */
-/* На второй странице: фото СЛЕВА от текста "Who am I" и "What I did" */
 .page-about .info-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -197,27 +193,18 @@ body {
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-/* Блоки после info-wrapper на второй странице */
 .page-about .project-block,
 .page-about .why-block {
     margin-bottom: 40px;
 }
 
-/* ========== НОВЫЕ СТИЛИ ДЛЯ НЕСКОЛЬКИХ БЛОКОВ НА ABOUT.HTML ========== */
-
-/* Каждый блок — отдельный с рамкой */
 .about-block {
-    border: 2px solid crimson;
     border-radius: 25px;
     padding: 30px;
     margin-bottom: 40px;
     background-color: #fefefe;
-    
 }
 
-
-
-/* Сетка внутри каждого блока */
 .about-block-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -225,35 +212,28 @@ body {
     align-items: center;
 }
 
-/* Чередование: первый блок — фото слева */
 .about-block:nth-child(1) .about-block-grid {
     grid-template-columns: 1fr 1.5fr;
 }
 
-/* Второй блок — фото справа */
 .about-block:nth-child(2) .about-block-grid {
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 0.8fr 1.5fr;
 }
 
-/* Третий блок — фото слева */
 .about-block:nth-child(3) .about-block-grid {
     grid-template-columns: 1fr 1.5fr;
 }
 
-/* Фото в блоках */
 .about-block-image img {
     width: 100%;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
+
 }
 
-.about-block-image img:hover {
-    transform: scale(1.02);
-}
 
-/* Текст в блоках */
+
 .about-block-text h2 {
     color: crimson;
     margin-bottom: 15px;
@@ -277,7 +257,6 @@ body {
     color: #2c3e4e;
 }
 
-/* Анимации для появления */
 .fade-up {
     opacity: 0;
     transform: translateY(50px);
@@ -289,13 +268,94 @@ body {
     transform: translateY(0);
 }
 
-/* Задержки для последовательного вылета */
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.3s; }
 .delay-3 { transition-delay: 0.5s; }
 
 
-/* Адаптация для телефонов */
+footer {
+    background: #1a1a2e;
+    color: rgb(255, 0, 0);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    z-index: 2;
+}
+
+.slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: crimson;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@media (max-width: 768px) {
+    .mySlides img {
+        height: 250px;
+    }
+}
+
 @media (max-width: 768px) {
     .about-block-grid,
     .about-block:nth-child(1) .about-block-grid,
@@ -314,7 +374,6 @@ body {
     }
 }
 
-/* Адаптация для всех */
 @media (max-width: 968px) {
     .page-index .info-wrapper,
     .page-about .info-wrapper {
