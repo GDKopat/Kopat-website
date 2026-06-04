@@ -17,7 +17,6 @@
     <section class="main-content">
         <div class="container">
             <br><br><br>
-            <!-- БЛОК 1: Who am I + What I did (фото слева) -->
             <div class="about-block fade-up">
                 <div class="about-block-grid">
                     <div class="about-block-image fade-up delay-1">
@@ -37,7 +36,6 @@
                 </div>
             </div>
 
-            <!-- БЛОК 2: My main project (фото справа) -->
             <div class="about-block fade-up">
                 <div class="about-block-grid">
                     <div class="about-block-text">
@@ -58,7 +56,6 @@
                 </div>
             </div>
 
-            <!-- БЛОК 3: Why Japan (фото слева) -->
             <div class="about-block fade-up">
                 <div class="about-block-grid">
                     <div class="about-block-image fade-up delay-1">
@@ -67,11 +64,36 @@
                     <div class="about-block-text">
                         <h2 class="fade-up delay-2">Why Japan?</h2>
                         <p class="fade-up delay-3">Япония — одна из ведущих стран в IT. Меня привлекает её культура, технологический уровень и возможность найти работу или стажировку. Сейчас я учу английский и планирую начать учить японский. Цель — через несколько лет переехать туда и работать по специальности.</p>
-                    </div>
+                    </div><br><br>
                 </div>
+                <section class="slideshow-section fade-up">
+                    <h2 style="text-align: center; color: crimson; margin-bottom: 20px;">Фотогалерея</h2>
+                    <div class="slideshow-container">
+                        <div class="mySlides fade">
+                            <img src="Images\BEST-JAPAN.jpg" alt="Япония 1" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Images\ozero-japan-sakura.jpg" alt="Япония 2" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Images\yaponiya-ostrov-honsyu-2482.webp" alt="Япония 3" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Images\kioto-sady-iaponii-iaponiia-park-kamnei-sad-japanese-home-ga.webp" alt="Япония 4" style="width:100%">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
+                </section>
             </div>
 
-            <!-- КНОПКИ -->
             <div style="text-align: center; margin-top: 40px;">
                 <a href="index.html" class="btn fade-up">На главную</a>
             </div>
@@ -79,7 +101,6 @@
     </section>
 
     <script>
-        // ========== ЭФФЕКТ ДЛЯ ФОНА (твой старый код, не трогаем) ==========
         const heroImage = document.getElementById('heroImage');
         
         window.addEventListener('DOMContentLoaded', () => {
@@ -100,29 +121,37 @@
             heroImage.style.transform = `scale(${scale})`;
         });
 
-        // ========== НОВЫЙ КОД: АНИМАЦИИ ВЫЛЕТА ПРИ СКРОЛЛЕ ==========
-        // 1. Находим ВСЕ элементы с классом .fade-up (они будут анимироваться)
         const animatedElements = document.querySelectorAll('.fade-up');
-        
-        // 2. Создаём наблюдателя (Intersection Observer)
-        // Он будет следить, когда элементы появляются на экране
         const observer = new IntersectionObserver((entries) => {
-            // entries - массив элементов, которые попали в кадр
             entries.forEach(entry => {
-                // Если элемент виден на экране
                 if (entry.isIntersecting) {
-                    // Добавляем класс .show, который включает анимацию
                     entry.target.classList.add('show');
                 }
             });
-        }, { 
-            threshold: 0.2  // Элемент считается видимым, когда 20% его площади на экране
-        });
-        
-        // 3. Начинаем следить за каждым элементом с классом .fade-up
+        }, { threshold: 0.2 });
         animatedElements.forEach(element => {
             observer.observe(element);
         });
+
+        let slideIndex = 1;
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function currentSlide(n) { showSlides(slideIndex = n); }
+        showSlides(slideIndex);
+        setInterval(function() { plusSlides(1); }, 6000);
     </script>
 </body>
 </html>
