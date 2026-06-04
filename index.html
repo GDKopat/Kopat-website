@@ -11,7 +11,7 @@
         <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
         <div class="hero-content">
             <h1 class="hero-title fade-up">kopat</h1>
-            <p class="hero-subtitle fade-up">Welcome to my website</p>
+            <p class="hero-subtitle fade-up" id="typewriter-subtitle"></p>
         </div>
     </section>
 
@@ -20,35 +20,35 @@
             <br><br><br>
             <div class="info-wrapper">
                 <div class="info-text">
-                    <!-- Добавляем классы анимации -->
                     <h2 class="fade-up">About me</h2>
                     <p class="fade-up delay-1">Мне 17 лет. Я пишу на Python, делаю консольные приложения и постепенно осваиваю веб. Мой основной проект — гид по Японии с парсингом Википедии и открытыми API. Так же есть пару проектов на Github</p>
                     <div class="fade-up delay-2">
                         <a href="about.html" class="btn">More about me</a>
                         <a href="https://github.com/GDKopat" target="_blank" class="btn">My Github</a>
-                        <button class="btn btn:hover fade-up" onclick="askQuestion()">Нажми меня</button>
+                        <button class="btn fade-up" onclick="askQuestion()">Нажми меня</button>
                     </div>
                 </div>
                 <div class="info-image fade-up delay-3">
                     <img src="Images/sakura_minimalism.jpg" alt="Сакура">
                 </div>
             </div>
-        </div>
     </section>
+
 
     <script>
         function askQuestion() {
             let answer = prompt('Какой твой любимый язык программирования?');
             if (answer) {
                 if (answer.length > 20) {
-                    alert(`Ладно -_-`)
+                    alert("Ладно -_-");
+                } else if (answer === "67") {
+                    alert("67 67 пасхалко");
                 } else {
-                    alert(`Отличный выбор! ${answer} — это мощно! `);
+                    alert(`Отличный выбор! ${answer} — это мощно!`);
                 }
             }
         }
 
-        // Эффект масштабирования фона
         const heroImage = document.getElementById('heroImage');
         
         window.addEventListener('DOMContentLoaded', () => {
@@ -69,25 +69,30 @@
             heroImage.style.transform = `scale(${scale})`;
         });
 
-        // ========== АКТИВАЦИЯ АНИМАЦИЙ ПРИ СКРОЛЛЕ ==========
-        // Находим все элементы с классами анимации
         const animatedElements = document.querySelectorAll('.fade-up');
-        
-        // Создаём наблюдатель за появлением элементов
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                 }
             });
-        }, { 
-            threshold: 0.2,  // Элемент активируется когда 20% видно на экране
-            rootMargin: '0px 0px -50px 0px'  // Небольшая задержка перед активацией
-        });
-        
-        // Начинаем следить за каждым элементом
+        }, { threshold: 0.2 });
         animatedElements.forEach(element => {
             observer.observe(element);
+        });
+
+        const subtitleElement = document.getElementById('typewriter-subtitle');
+        const subtitleText = 'Welcome to my website!';
+        let subtitleIndex = 0;
+        function typeSubtitle() {
+            if (subtitleIndex < subtitleText.length) {
+                subtitleElement.textContent += subtitleText.charAt(subtitleIndex);
+                subtitleIndex++;
+                setTimeout(typeSubtitle, 40);
+            }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeSubtitle, 1000);
         });
     </script>
 </body>
