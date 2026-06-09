@@ -51,7 +51,7 @@
                         <a href="https://github.com/GDKopat" target="_blank" class="btn fade-up delay-8">My Github</a>
                     </div>
                     <div class="about-block-image fade-up delay-9">
-                        <img src="Images\Japan_minimalism_for_mainproject_two.jpg" alt="Japan project">
+                        <img src="Images/Japan_minimalism_for_mainproject_two.jpg" alt="Japan project" style="width: 80%; height: auto; display: block; margin: 0 auto;">
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </div><br><br>
                 </div>
                 <section class="slideshow-section fade-up">
-                    <h2 style="text-align: center; color: crimson; margin-bottom: 20px;">Фотогалерея</h2>
+                    <h2 style="text-align: center; color: crimson; margin-bottom: 20px;">日本の風景 - Пейзажи Японии</h2>
                     <div class="slideshow-container">
                         <div class="mySlides fade">
                             <img src="Images\BEST-JAPAN.jpg" alt="Япония 1" style="width:100%">
@@ -100,58 +100,7 @@
         </div>
     </section>
 
-    <script>
-        const heroImage = document.getElementById('heroImage');
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                heroImage.classList.add('show');
-            }, 500);
-        });
-
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const heroHeight = window.innerHeight;
-            const maxScale = 1.5;
-
-            let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
-            if (scale > maxScale) scale = maxScale;
-            if (scale < 1) scale = 1;
-
-            heroImage.style.transform = `scale(${scale})`;
-        });
-
-        const animatedElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.2 });
-        animatedElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        let slideIndex = 1;
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-        }
-        function plusSlides(n) { showSlides(slideIndex += n); }
-        function currentSlide(n) { showSlides(slideIndex = n); }
-        showSlides(slideIndex);
-        setInterval(function() { plusSlides(1); }, 6000);
-    </script>
+    <script src="JS/common.js"></script>
+    <script src="JS/about.js"></script>
 </body>
 </html>
