@@ -32,68 +32,9 @@
                     <img src="Images/sakura_minimalism.jpg" alt="Сакура">
                 </div>
             </div>
+        </div>
     </section>
-
-
-    <script>
-        function askQuestion() {
-            let answer = prompt('Какой твой любимый язык программирования?');
-            if (answer) {
-                if (answer.length > 20) {
-                    alert("Ладно -_-");
-                } else if (answer === "67") {
-                    alert("67 67 пасхалко");
-                } else {
-                    alert(`Отличный выбор! ${answer} — это мощно!`);
-                }
-            }
-        }
-
-        const heroImage = document.getElementById('heroImage');
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                heroImage.classList.add('show');
-            }, 500);
-        });
-        
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const heroHeight = window.innerHeight;
-            const maxScale = 1.5;
-            
-            let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
-            if (scale > maxScale) scale = maxScale;
-            if (scale < 1) scale = 1;
-            
-            heroImage.style.transform = `scale(${scale})`;
-        });
-
-        const animatedElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.2 });
-        animatedElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        const subtitleElement = document.getElementById('typewriter-subtitle');
-        const subtitleText = 'Welcome to my website!';
-        let subtitleIndex = 0;
-        function typeSubtitle() {
-            if (subtitleIndex < subtitleText.length) {
-                subtitleElement.textContent += subtitleText.charAt(subtitleIndex);
-                subtitleIndex++;
-                setTimeout(typeSubtitle, 40);
-            }
-        }
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(typeSubtitle, 1000);
-        });
-    </script>
+    <script src="JS/common.js"></script>
+    <script src="JS/index.js"></script>
 </body>
 </html>
