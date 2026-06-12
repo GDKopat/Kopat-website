@@ -1,4 +1,4 @@
-// common.js - старый код + правильная кнопка
+// common.js - ВСЁ СТАРОЕ РАБОТАЕТ + КНОПКА
 
 const heroImage = document.getElementById('heroImage');
 
@@ -33,30 +33,33 @@ animatedElements.forEach(element => {
     observer.observe(element);
 });
 
-// ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА (ИСПРАВЛЕНО) ==========
+// ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА - ИСПРАВЛЕНО ==========
 function switchLanguage() {
-    let currentUrl = window.location.href;
-    let baseUrl = 'https://gdkopat.github.io/Kopat-website/';
+    let path = window.location.pathname;   // например, "/Kopat-website/index.html" или "/Kopat-website/about.html"
+    let lastSlash = path.lastIndexOf('/');
+    let dir = path.substring(0, lastSlash + 1);  // "/Kopat-website/"
+    let file = path.substring(lastSlash + 1);    // "index.html", "about.html" или "" (если корень)
     
-    // Если на английской версии (в URL есть eng- перед именем файла)
-    if (currentUrl.includes('/eng-')) {
-        // Переход на русскую: убираем eng-
-        let newUrl = currentUrl.replace('/eng-', '/');
-        window.location.href = newUrl;
-    } else {
-        // Переход на английскую: добавляем eng- перед именем файла
-        let fileName = 'index.html';
-        if (currentUrl.includes('about.html')) {
-            fileName = 'about.html';
-        }
-        window.location.href = baseUrl + 'eng-' + fileName;
+    // Если корень сайта (пустое имя файла) → считаем что это index.html
+    if (file === "") {
+        file = "index.html";
     }
+    
+    // Переключаем
+    if (file.startsWith("eng-")) {
+        file = file.replace("eng-", "");   // убираем eng-
+    } else {
+        file = "eng-" + file;              // добавляем eng-
+    }
+    
+    // Склеиваем и переходим
+    window.location.href = dir + file;
 }
 
 // Подключаем кнопку
 document.addEventListener('DOMContentLoaded', function() {
-    const langBtn = document.querySelector('.btn-center .btn');
-    if (langBtn) {
-        langBtn.onclick = switchLanguage;
+    const btn = document.querySelector('.btn-center .btn');
+    if (btn) {
+        btn.onclick = switchLanguage;
     }
 });
