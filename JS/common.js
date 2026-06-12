@@ -1,61 +1,52 @@
-// common.js - работает на ВСЕХ страницах
-
-const heroImage = document.getElementById('heroImage');
-
-window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        if (heroImage) heroImage.classList.add('show');
-    }, 500);
-});
-
-window.addEventListener('scroll', () => {
-    if (!heroImage) return;
-    const scrollPosition = window.scrollY;
-    const heroHeight = window.innerHeight;
-    const maxScale = 1.7;
-    
-    let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
-    if (scale > maxScale) scale = maxScale;
-    if (scale < 1) scale = 1;
-    
-    heroImage.style.transform = `scale(${scale})`;
-});
-
-const animatedElements = document.querySelectorAll('.fade-up');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
-        }
-    });
-}, { threshold: 0.2 });
-animatedElements.forEach(element => {
-    observer.observe(element);
-});
-
-
 // Переключение языка (редирект на eng-страницы)
 function switchLanguage() {
-    const currentPath = window.location.pathname;
-    const fileName = currentPath.split('/').pop(); // получаем имя файла (например, index.html или about.html)
+    // Получаем текущий путь
+    let currentPath = window.location.pathname;
     
-    // Проверяем, находимся ли мы уже на английской версии
-    const isEnglish = fileName.startsWith('eng-');
+    // Убираем начальный и конечный слеши для удобства
+    let cleanPath = currentPath.replace(/^\/|\/$/g, '');
+    
+    // Определяем, находимся ли мы на английской версии
+    // Проверяем, начинается ли путь с 'eng-' ИЛИ это папка 'eng-'
+    let isEnglish = cleanPath.startsWith('eng-') || cleanPath === 'eng-';
+    
+    let newPath = '';
     
     if (isEnglish) {
-        // Переключаем на русскую версию (убираем eng-)
-        let newFile = fileName.replace('eng-', '');
-        window.location.href = newFile;
+        // Переключаем на русскую версию: убираем 'eng-' из пути
+        if (cleanPath === 'eng-' || cleanPath === 'eng-index.html') {
+            newPath = '/Kopat-website/';
+        } else if (cleanPath === 'eng-about.html') {
+            newPath = '/Kopat-website/about.html';
+        } else {
+            // Если путь начинается с 'eng-', убираем этот префикс
+            newPath = '/Kopat-website/' + cleanPath.substring(4);
+        }
     } else {
-        // Переключаем на английскую версию (добавляем eng-)
-        window.location.href = 'eng-' + fileName;
+        // Переключаем на английскую версию
+        if (cleanPath === '' || cleanPath === 'index.html' || cleanPath === 'Kopat-website/') {
+            newPath = '/Kopat-website/eng-index.html';
+        } else if (cleanPath === 'about.html') {
+            newPath = '/Kopat-website/eng-about.html';
+        } else {
+            newPath = '/Kopat-website/eng-' + cleanPath;
+        }
     }
+    
+    // Убираем возможные двойные слеши
+    newPath = newPath.replace(/\/\//g, '/');
+    console.log('Переход на:', newPath);
+    window.location.href = newPath;
 }
 
 // Инициализация кнопки после загрузки страницы
 document.addEventListener('DOMContentLoaded', function() {
-    const langBtn = document.querySelector('.btn-center .btn');
+    // Ищем кнопку. Добавь ей класс или ID, чтобы наверняка.
+    const langBtn = document.querySelector('.lang-switch-btn, .btn-center .btn, button.btn');
     if (langBtn) {
         langBtn.onclick = switchLanguage;
+        console.log('Кнопка найдена, обработчик повешен');
+    } else {
+        console.log('Кнопка не найдена');
     }
 });
