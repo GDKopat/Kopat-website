@@ -150,6 +150,14 @@ body {
     transition: all 0.4s ease;
 }
 
+.btn-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    z-index: 10;
+}
+
 .page-index .info-wrapper {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
