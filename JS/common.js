@@ -1,52 +1,72 @@
-// Переключение языка (редирект на eng-страницы)
+// common.js - работает на ВСЕХ страницах
+
+const heroImage = document.getElementById('heroImage');
+
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        if (heroImage) heroImage.classList.add('show');
+    }, 500);
+});
+
+window.addEventListener('scroll', () => {
+    if (!heroImage) return;
+    const scrollPosition = window.scrollY;
+    const heroHeight = window.innerHeight;
+    const maxScale = 1.7;
+    
+    let scale = 1 + (scrollPosition / heroHeight) * (maxScale - 1);
+    if (scale > maxScale) scale = maxScale;
+    if (scale < 1) scale = 1;
+    
+    heroImage.style.transform = `scale(${scale})`;
+});
+
+const animatedElements = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+animatedElements.forEach(element => {
+    observer.observe(element);
+});
+
+// ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА - ПОЧИНЕНО ==========
 function switchLanguage() {
-    // Получаем текущий путь
     let currentPath = window.location.pathname;
     
-    // Убираем начальный и конечный слеши для удобства
-    let cleanPath = currentPath.replace(/^\/|\/$/g, '');
+    // Убираем возможный слеш в конце
+    let cleanPath = currentPath.replace(/\/$/, '');
     
-    // Определяем, находимся ли мы на английской версии
-    // Проверяем, начинается ли путь с 'eng-' ИЛИ это папка 'eng-'
-    let isEnglish = cleanPath.startsWith('eng-') || cleanPath === 'eng-';
+    // Отделяем имя файла
+    let lastSlash = cleanPath.lastIndexOf('/');
+    let fileName = lastSlash !== -1 ? cleanPath.substring(lastSlash + 1) : cleanPath;
     
-    let newPath = '';
-    
-    if (isEnglish) {
-        // Переключаем на русскую версию: убираем 'eng-' из пути
-        if (cleanPath === 'eng-' || cleanPath === 'eng-index.html') {
-            newPath = '/Kopat-website/';
-        } else if (cleanPath === 'eng-about.html') {
-            newPath = '/Kopat-website/about.html';
-        } else {
-            // Если путь начинается с 'eng-', убираем этот префикс
-            newPath = '/Kopat-website/' + cleanPath.substring(4);
-        }
-    } else {
-        // Переключаем на английскую версию
-        if (cleanPath === '' || cleanPath === 'index.html' || cleanPath === 'Kopat-website/') {
-            newPath = '/Kopat-website/eng-index.html';
-        } else if (cleanPath === 'about.html') {
-            newPath = '/Kopat-website/eng-about.html';
-        } else {
-            newPath = '/Kopat-website/eng-' + cleanPath;
-        }
+    // Если пусто (открыт корень сайта) → считаем index.html
+    if (fileName === '') {
+        fileName = 'index.html';
+        cleanPath = cleanPath + '/'; // восстанавливаем для правильной замены
     }
     
-    // Убираем возможные двойные слеши
-    newPath = newPath.replace(/\/\//g, '/');
-    console.log('Переход на:', newPath);
-    window.location.href = newPath;
+    if (fileName.startsWith('eng-')) {
+        // Переход на русскую версию (убираем eng-)
+        let newFileName = fileName.replace('eng-', '');
+        let newPath = cleanPath.substring(0, lastSlash + 1) + newFileName;
+        window.location.href = newPath;
+    } else {
+        // Переход на английскую версию (добавляем eng-)
+        let newFileName = 'eng-' + fileName;
+        let newPath = cleanPath.substring(0, lastSlash + 1) + newFileName;
+        window.location.href = newPath;
+    }
 }
 
-// Инициализация кнопки после загрузки страницы
+// Инициализация кнопки
 document.addEventListener('DOMContentLoaded', function() {
-    // Ищем кнопку. Добавь ей класс или ID, чтобы наверняка.
-    const langBtn = document.querySelector('.lang-switch-btn, .btn-center .btn, button.btn');
+    const langBtn = document.querySelector('.btn-center .btn');
     if (langBtn) {
         langBtn.onclick = switchLanguage;
-        console.log('Кнопка найдена, обработчик повешен');
-    } else {
-        console.log('Кнопка не найдена');
     }
 });
