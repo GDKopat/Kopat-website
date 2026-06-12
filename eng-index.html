@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopat - Home</title>
+    <link rel="stylesheet" href="CSS\styles.css">
+</head>
+<body class="page-index">
+    <section class="hero">
+        <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
+        <div class="hero-content">
+            <h1 class="hero-title fade-up">kopat</h1>
+            <p class="hero-subtitle fade-up" id="typewriter-subtitle"></p>
+        </div>
+    </section>
+    <br><br><br>
+    <section class="main-content">
+        <div class="container">
+            <div class="btn-center"><a class="btn" onclick="switchLanguage()">Eng/Ru</a></div>
+            <div class="info-wrapper">
+                <div class="info-image fade-up delay-3">
+                    <img src="Images\samurai-minimalism.jpg" alt="Samurai-minimalism">
+                </div>
+                <!-- БЛОК 2: Текст About this site (справа) -->
+                <div class="info-text">
+                    <h2 class="fade-up delay-1">About this site</h2>
+                    <ul>
+                        <li class="fade-up delay-2">This is my first independent web project.</li>
+                        <li class="fade-up delay-2">I write code to understand layout and JavaScript interaction.</li>
+                        <li class="fade-up delay-2">A project for myself, so I can show you where I started.</li>
+                        <li class="fade-up delay-2">He doesn't claim to be perfect, but he continues to change every day.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="main-content">
+        <div class="container">
+            <br><br><br>
+            <div class="info-wrapper">
+                <!-- БЛОК 3: Текст About me (слева) -->
+                <div class="info-text">
+                    <h2 class="fade-up delay-1">About me</h2>
+                    <p class="fade-up delay-1">I write Python, build console apps, and am gradually learning web development. My main project right now is a guide to Japan: scraping Wikipedia and working with open APIs. You can find some of my other work on GitHub.</p>
+                    <div class="fade-up delay-2">
+                        <div>
+                            <div class="fade-up delay-1"><a href="eng-about.html" class="btn">More about me</a></div>
+                            <div class="fade-up delay-2"><a href="https://github.com/GDKopat" target="_blank" class="btn">My Github</a></div>
+                            <div class="fade-up delay-3"><a class="btn" onclick="askQuestion()">?</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- БЛОК 4: Картинка сакуры (справа) -->
+                <div class="info-image fade-up delay-3">
+                    <img src="Images/sakura_minimalism.jpg" alt="Сакура">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="JS/common.js"></script>
+    <script src="JS/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopat - About</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body class="page-about">
+    <section class="hero">
+        <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
+        <div class="hero-content">
+            <h1 class="hero-title fade-up">About kopat</h1>
+        </div>
+    </section>
+    <section class="main-content">
+        <div class="container">
+            <h3 class="hero-title fade-up">Main info</h3>
+            <div class="fade-up btn-center"><a class="btn" onclick="switchLanguage()">Eng/Ru</a></div>
+            <br><br><br>
+            <div class="about-block fade-up">
+                <div class="about-block-grid">
+                    <div class="about-block-image fade-up delay-1">
+                        <img src="Images/sakura_minimalism_for_about.jpg" alt="Сакура">
+                    </div>
+                    <div class="about-block-text">
+                        <h2 class="fade-up delay-1">Who am I</h2>
+                        <p class="fade-up delay-3">Hi! I'm a beginner developer from Russia. I've been interested in programming for a long time, but I started writing real code a year ago. I feel confident in Python, but I'm still learning HTML/CSS.</p>
+                        <h2 class="fade-up delay-1">What I did</h2>
+                        <p class="fade-up delay-3">Here's what's finished and working:</p>
+                        <ul>
+                            <li class="fade-up delay-2">Guide to Japan: shows weather, parses Wikipedia, gives random facts.</li>
+                            <li class="fade-up delay-2">Dictionary-quiz for learning English or other words.</li>
+                            <li class="fade-up delay-2">This website (HTML/CSS).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="about-block fade-up">
+                <div class="about-block-grid">
+                    <div class="about-block-text">
+                        <h2 class="fade-up delay-1">My main project is a guide to Japan</h2>
+                        <p class="fade-up delay-2">The Japan Guide is a console application that can already:</p>
+                        <ul>
+                            <li class="fade-up delay-3">Get the first paragraph from Wikipedia about any city.</li>
+                            <li class="fade-up delay-3">Request current weather via an external API.</li>
+                            <li class="fade-up delay-3">Show a random fact about Japan.</li>
+                            <li class="fade-up delay-3">Give a random cat fact (API).</li>
+                        </ul>
+                        <p class="fade-up delay-3">All of this works right now in the console version. The project will continue to be improved.</p>
+                        <div class="fade-up delay-1"><a href="https://github.com/GDKopat" target="_blank" class="btn">My Github</a></div>
+                    </div>
+                    <div class="about-block-image fade-up delay-2">
+                        <img src="Images/Japan_minimalism_for_mainproject_two.jpg" alt="Japan project" style="width: 80%; height: auto; display: block; margin: 0 auto;">
+                    </div>
+                </div>
+            </div>
+            <div class="about-block fade-up">
+                <div class="about-block-grid">
+                    <div class="about-block-image fade-up delay-1">
+                        <img src="Images\Japan_flag_for_about_me_japan.webp" alt="Why Japan">
+                    </div>
+                    <div class="about-block-text">
+                        <h2 class="fade-up delay-1">Why Japan?</h2>
+                        <p class="fade-up delay-2">Japan is one of the leading countries in IT. I'm drawn to its culture, technological level, and the opportunity to find a job or internship. Right now I'm learning English and planning to start learning Japanese. My goal is to move there in a few years and work in my field.</p>
+                    </div><br><br>
+                </div>
+                <section class="slideshow-section fade-up">
+                    <h2 style="text-align: center; color: crimson; margin-bottom: 20px;">日本の風景 - Landscapes of Japan</h2>
+                    <div class="slideshow-container">
+                        <div class="mySlides fade">
+                            <img src="Images\BEST-JAPAN.jpg" alt="Япония 1" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Images\ozero-japan-sakura.jpg" alt="Япония 2" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Images\yaponiya-ostrov-honsyu-2482.webp" alt="Япония 3" style="width:100%">
+                        </div>
+                        <div class="mySlides fade">
+                            <img src="Images\kioto-sady-iaponii-iaponiia-park-kamnei-sad-japanese-home-ga.webp" alt="Япония 4" style="width:100%">
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                    </div>
+                </section>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="fade-up delay-1"><a href="eng-index.html" class="btn">Back to home</a></div>
+            </div>
+        </div>
+    </section>
+    <script src="JS/common.js"></script>
+    <script src="JS/about.js"></script>
+</body>
+</html>
