@@ -1,4 +1,4 @@
-// common.js - работает на ВСЕХ страницах
+// common.js - старый код + правильная кнопка
 
 const heroImage = document.getElementById('heroImage');
 
@@ -33,37 +33,27 @@ animatedElements.forEach(element => {
     observer.observe(element);
 });
 
-// ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА - ПОЧИНЕНО ==========
+// ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА (ИСПРАВЛЕНО) ==========
 function switchLanguage() {
-    let currentPath = window.location.pathname;
+    let currentUrl = window.location.href;
+    let baseUrl = 'https://gdkopat.github.io/Kopat-website/';
     
-    // Убираем возможный слеш в конце
-    let cleanPath = currentPath.replace(/\/$/, '');
-    
-    // Отделяем имя файла
-    let lastSlash = cleanPath.lastIndexOf('/');
-    let fileName = lastSlash !== -1 ? cleanPath.substring(lastSlash + 1) : cleanPath;
-    
-    // Если пусто (открыт корень сайта) → считаем index.html
-    if (fileName === '') {
-        fileName = 'index.html';
-        cleanPath = cleanPath + '/'; // восстанавливаем для правильной замены
-    }
-    
-    if (fileName.startsWith('eng-')) {
-        // Переход на русскую версию (убираем eng-)
-        let newFileName = fileName.replace('eng-', '');
-        let newPath = cleanPath.substring(0, lastSlash + 1) + newFileName;
-        window.location.href = newPath;
+    // Если на английской версии (в URL есть eng- перед именем файла)
+    if (currentUrl.includes('/eng-')) {
+        // Переход на русскую: убираем eng-
+        let newUrl = currentUrl.replace('/eng-', '/');
+        window.location.href = newUrl;
     } else {
-        // Переход на английскую версию (добавляем eng-)
-        let newFileName = 'eng-' + fileName;
-        let newPath = cleanPath.substring(0, lastSlash + 1) + newFileName;
-        window.location.href = newPath;
+        // Переход на английскую: добавляем eng- перед именем файла
+        let fileName = 'index.html';
+        if (currentUrl.includes('about.html')) {
+            fileName = 'about.html';
+        }
+        window.location.href = baseUrl + 'eng-' + fileName;
     }
 }
 
-// Инициализация кнопки
+// Подключаем кнопку
 document.addEventListener('DOMContentLoaded', function() {
     const langBtn = document.querySelector('.btn-center .btn');
     if (langBtn) {
