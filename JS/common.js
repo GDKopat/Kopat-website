@@ -1,5 +1,5 @@
-// common.js - ВСЁ СТАРОЕ РАБОТАЕТ + КНОПКА
-
+// ==================== common.js ====================
+// 1. ПАРАЛЛАКС ДЛЯ ГЛАВНОЙ КАРТИНКИ
 const heroImage = document.getElementById('heroImage');
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +21,7 @@ window.addEventListener('scroll', () => {
     heroImage.style.transform = `scale(${scale})`;
 });
 
+// 2. АНИМАЦИЯ ПРИ ПРОКРУТКЕ (fade-up)
 const animatedElements = document.querySelectorAll('.fade-up');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -33,33 +34,43 @@ animatedElements.forEach(element => {
     observer.observe(element);
 });
 
-// ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА - ИСПРАВЛЕНО ==========
+// 3. ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА (ТОЛЬКО ПО КНОПКЕ)
 function switchLanguage() {
-    let path = window.location.pathname;   // например, "/Kopat-website/index.html" или "/Kopat-website/about.html"
-    let lastSlash = path.lastIndexOf('/');
-    let dir = path.substring(0, lastSlash + 1);  // "/Kopat-website/"
-    let file = path.substring(lastSlash + 1);    // "index.html", "about.html" или "" (если корень)
+    let currentPath = window.location.pathname;   // /Kopat-website/  или  /Kopat-website/about.html
     
-    // Если корень сайта (пустое имя файла) → считаем что это index.html
-    if (file === "") {
-        file = "index.html";
+    // Если уже на английской странице – убираем eng-
+    if (currentPath.includes('eng-')) {
+        let newPath = currentPath.replace('eng-', '');
+        window.location.href = newPath;
+        return;
     }
     
-    // Переключаем
-    if (file.startsWith("eng-")) {
-        file = file.replace("eng-", "");   // убираем eng-
-    } else {
-        file = "eng-" + file;              // добавляем eng-
+    // Иначе – переключаем на английскую версию
+    // Главная страница (путь заканчивается на /, index.html или вообще ничего)
+    if (currentPath === '/' || currentPath === '/Kopat-website/' || currentPath.endsWith('index.html')) {
+        window.location.href = '/Kopat-website/eng-index.html';
     }
-    
-    // Склеиваем и переходим
-    window.location.href = dir + file;
+    // Страница about
+    else if (currentPath.includes('about.html')) {
+        window.location.href = '/Kopat-website/eng-about.html';
+    }
+    // Любая другая страница (если вдруг) – кидаем на английскую главную
+    else {
+        window.location.href = '/Kopat-website/eng-index.html';
+    }
 }
 
-// Подключаем кнопку
+// 4. ПОДКЛЮЧАЕМ КНОПКУ ПОСЛЕ ЗАГРУЗКИ СТРАНИЦЫ
 document.addEventListener('DOMContentLoaded', function() {
-    const btn = document.querySelector('.btn-center .btn');
-    if (btn) {
-        btn.onclick = switchLanguage;
+    // Ищем кнопку внутри .btn-center с классом .btn
+    let langButton = document.querySelector('.btn-center .btn');
+    if (!langButton) {
+        // Если не нашли – может, кнопка просто с классом .btn где-то ещё
+        langButton = document.querySelector('.btn[onclick="switchLanguage()"]');
+    }
+    if (langButton) {
+        // Если у кнопки уже есть onclick – убираем его, чтобы не срабатывало дважды
+        langButton.removeAttribute('onclick');
+        langButton.addEventListener('click', switchLanguage);
     }
 });
