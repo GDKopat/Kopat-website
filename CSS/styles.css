@@ -130,23 +130,24 @@ body {
 }
 
 .btn {
+    will-change: background-color, color;
     display: inline-block;
-    background-color: rgb(220, 20, 60);
-    color: white;
+    background-color: white;
+    color: crimson;
     padding: 12px 28px;
     text-decoration: none;
     border-radius: 40px;
     font-weight: bold;
-    transition: background-color 0.3s;
-    transition: transform 0.5s ease;
-    border: crimson;
+    border: 3px solid crimson;
     margin-right: 10px;
     margin-top: 20px;
+    transition: all 0.4s ease;
 }
 
 .btn:hover {
-    background-color: rgb(192, 20, 55);
-    transform: scale(1.05);
+    background-color: crimson;
+    color: white;
+    transition: all 0.4s ease;
 }
 
 .page-index .info-wrapper {
