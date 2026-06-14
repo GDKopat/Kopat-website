@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopat - Feedback</title>
+    <link rel="stylesheet" href="CSS\styles.css">
+</head>
+<body class="page-index">
+    <section class="hero">
+        <img src="Images/Japan-minimalism-wallpaper2.png" alt="Background" class="hero-image" id="heroImage">
+        <div class="box">
+            <h1 class="hero-title fade-up">Feedback</h1>
+            <!-- ГЛАВНОЕ: Оборачиваем поля в form и добавляем action -->
+            <form action="https://formsubmit.co/bobrgmih123@gmail.com" method="POST" class="feedbackBX">
+                <!-- Поле "email" обязательно! Сервис возьмёт его как адрес отправителя -->
+                <div class="fade-up delay-1">
+                    <input type="text" name="name" placeholder="Name" required/>
+                </div>
+                <div class="fade-up delay-2">
+                    <!-- ВАЖНО: name="email" -->
+                    <input type="email" name="email" placeholder="Email" required/>
+                </div>
+                <div class="fade-up delay-3">
+                    <input type="text" name="recommendations" placeholder="recommendations"/>
+                </div>
+                <div class="fade-up delay-4">
+                    <!-- Меняем <a> на <button> для отправки -->
+                    <button type="submit" class="btn">Send</button>
+                </div>
+                <!-- Отключаем капчу (если не нужна) и настраиваем внешний вид письма -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+            </form>
+            <div style="text-align: center; margin-top: 40px;">
+                <div class="fade-up delay-5"><a href="index.html" class="btn">Back to home</a></div>
+            </div>
+        </div>
+    </section>
+    <script src="JS/common.js"></script>
+</body>
+</html>
