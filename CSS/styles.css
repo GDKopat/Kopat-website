@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
     font-family: 'MySakuraFont', sans-serif;
     background-color: black;
     overflow-x: hidden;
+    
 }
 
 ::-webkit-scrollbar {
@@ -284,7 +286,8 @@ body {
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.3s; }
 .delay-3 { transition-delay: 0.5s; }
-
+.delay-4 { transition-delay: 0.7s; }
+.delay-5 { transition-delay: 1s; }
 
 
 footer {
@@ -357,6 +360,51 @@ footer {
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
+}
+
+.box {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.feedbackBX {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: rotateY(126px);
+    gap: 20px;
+    width: 70%;
+    transition: 0.5s;
+}
+
+.box:hover .feedbackBX {
+    transform: rotateY(20px);
+}
+
+.feedbackBX input,button {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-size: 1em;
+    font-family: 'MySakuraFont', sans-serif;
+    color: crimson;
+    background: rgb(255, 255, 255);
+    border: 3px solid crimson;
+    border-radius: 40px;
+}
+
+.feedbackBX input::placeholder {
+    color: crimson;
 }
 
 @keyframes fade {
