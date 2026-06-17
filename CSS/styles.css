@@ -5,6 +5,9 @@
     user-select: none;
 }
 
+html {
+    scroll-behavior:smooth;
+}
 body {
     font-family: 'MySakuraFont', sans-serif;
     background-color: black;
